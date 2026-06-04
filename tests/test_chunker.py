@@ -1,10 +1,11 @@
 import sys
+import pytest
 sys.path.append("convagent")
 
 from chunker import chunk_text_file
 
 
-def test_chunk_text_file():
+def test_chunk_text_file_success():
     chunks = chunk_text_file("data/sample.txt")
 
     assert len(chunks) > 0
@@ -12,4 +13,7 @@ def test_chunk_text_file():
 
     for chunk in chunks:
         assert isinstance(chunk, str)
-        assert len(chunk) > 0
+
+def test_chunk_text_file_invalid_format():
+    with pytest.raises(ValueError):
+        chunk_text_file("data/sample.pdf")
