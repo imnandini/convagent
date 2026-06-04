@@ -1,6 +1,9 @@
-def main():
-    print("Hello from convagent!")
+from convagent.retriever import retrieve
 
+query = "What is LSTM?"
 
-if __name__ == "__main__":
-    main()
+results = retrieve(query)
+
+for i, doc in enumerate(results, start=1):
+    print(f"\nResult {i}")
+    print(doc.page_content)
