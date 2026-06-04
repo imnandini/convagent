@@ -1,4 +1,7 @@
-from convagent.chunker import chunk_text_file
+import sys
+sys.path.append("convagent")
+
+from chunker import chunk_text_file
 
 
 def test_chunk_text_file():
