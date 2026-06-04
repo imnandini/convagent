@@ -1,5 +1,0 @@
-Artificial Intelligence is transforming the world.
-
-Large Language Models can understand and generate human-like text.
-
-Chunking is the process of breaking large documents into smaller pieces so that they can be processed efficiently.
