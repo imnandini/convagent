@@ -3,7 +3,10 @@
     "allow": [
       "Bash(curl -s https://download.pytorch.org/whl/cu124/torch/)",
       "Bash(curl -s https://download.pytorch.org/whl/cu126/torch/)",
-      "Bash(curl -s https://download.pytorch.org/whl/cu128/torch/)"
+      "Bash(curl -s https://download.pytorch.org/whl/cu128/torch/)",
+      "Bash(rm -f /disks/srikanth/desk/convagent/.git/index.lock)",
+      "Bash(git -C /disks/srikanth/desk/convagent commit --amend --reset-author --no-edit)",
+      "Bash(git -C /disks/srikanth/desk/convagent log --format='%h %an <%ae> %G? %s' -2)"
     ]
   }
 }
