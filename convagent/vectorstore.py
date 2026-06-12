@@ -1,19 +1,23 @@
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+
+from convagent.embedder import get_embeddings
 
 
-def save_to_vectordb(chunks):
-
-    embeddings = HuggingFaceEmbeddings(
-        model_name="Qwen/Qwen3-Embedding-0.6B"
-    )
+def save_to_vectordb(chunks, metadatas=None):
 
     print(f"Creating vector store with {len(chunks)} chunks")
 
-    vectordb = Chroma.from_texts(
+    vectordb = Chroma(
+        persist_directory="./chroma_db",
+        embedding_function=get_embeddings()
+    )
+
+    # Drop previously ingested chunks so re-running ingest doesn't duplicate them
+    vectordb.reset_collection()
+
+    vectordb.add_texts(
         texts=chunks,
-        embedding=embeddings,
-        persist_directory="./chroma_db"
+        metadatas=metadatas
     )
 
     print("Persisting vector store to disk")
