@@ -1,8 +1,12 @@
 import sys
-import pytest
-sys.path.append("convagent")
+from pathlib import Path
 
-from chunker import chunk_text_file
+import pytest
+
+# Make the project root importable so `convagent` resolves from anywhere
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from convagent.chunker import chunk_text_file
 
 
 def test_chunk_text_file_success():
